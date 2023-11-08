@@ -7,6 +7,7 @@ import FeaturedBlogs from "../pages/FeaturedBlogs";
 import Wishlist from "../pages/Wishlist";
 import Login from "../components/login/Login";
 import Register from "../components/login/Register";
+import Details from "../pages/Details";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -39,6 +40,12 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/details/:id",
+        element: <Details></Details>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/api/v1/category/${params.id}`),
       },
     ],
   },

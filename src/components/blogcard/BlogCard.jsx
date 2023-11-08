@@ -1,10 +1,9 @@
-import { Link } from "react-router-dom";
+const BlogCard = ({ item }) => {
+  const { categories, image, title, short_description } = item;
 
-const CategoryCard = ({ item }) => {
-  const { _id, categories, image, title, short_description } = item;
-  //   console.log(item);
+  console.log(item);
   return (
-    <div className="card w-11/12 mx-auto bg-base-100 shadow-xl">
+    <div className="card w-11/12 mx-auto bg-base-100 shadow-xl mt-10">
       <figure>
         <img className="h-64 w-full" src={image} alt="Shoes" />
       </figure>
@@ -13,9 +12,7 @@ const CategoryCard = ({ item }) => {
         <h2 className="card-title">{title}</h2>
         <p>{short_description}</p>
         <div className="card-actions justify-end">
-          <Link to={`/details/${_id}`}>
-            <button className="btn btn-sm">Details</button>
-          </Link>
+          <button className="btn btn-sm">Details</button>
           <button className="btn btn-sm">Wishlist</button>
         </div>
       </div>
@@ -23,4 +20,4 @@ const CategoryCard = ({ item }) => {
   );
 };
 
-export default CategoryCard;
+export default BlogCard;
