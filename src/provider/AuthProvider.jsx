@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -51,6 +52,10 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
+  const veri = (email) => {
+    return sendPasswordResetEmail(auth, email);
+  };
+
   const info = {
     user,
     loading,
@@ -58,6 +63,7 @@ const AuthProvider = ({ children }) => {
     googleLogin,
     loginUser,
     logOut,
+    veri: veri,
   };
   return <AuthContext.Provider value={info}>{children}</AuthContext.Provider>;
 };

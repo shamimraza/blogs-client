@@ -1,7 +1,13 @@
+import Banner from "../components/baner/Banner";
+import NewsLatter from "../components/newsLatter/NewsLatter";
+import RecentBlog from "../components/recentBlogs/RecentBlog";
+
 const Home = () => {
   return (
     <div>
-      <h2>this is home</h2>
+      <Banner></Banner>
+      <RecentBlog></RecentBlog>
+      <NewsLatter></NewsLatter>
     </div>
   );
 };

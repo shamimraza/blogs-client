@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import { Link } from "react-router-dom";
+import "sweetalert2/src/sweetalert2.scss";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const [registerError, SetRegisterError] = useState("");
@@ -34,7 +36,13 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
-        // const user = { name, email, password };
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Register Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
 
         setSusses("User sussesfully register");
         updateProfile(result.user, {

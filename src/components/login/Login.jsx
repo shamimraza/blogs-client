@@ -1,12 +1,18 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import "sweetalert2/src/sweetalert2.scss";
+import Swal from "sweetalert2";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   const [loginError, setLoginError] = useState("");
-  const { loginUser } = useContext(AuthContext);
+  const { loginUser, googleLogin } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
+  const googleHandleButton = () => {
+    googleLogin();
+  };
   const handleLogin = (e) => {
     e.preventDefault();
     // console.log(e.currentTarget);
@@ -20,6 +26,13 @@ const Login = () => {
     loginUser(email, password)
       .then((result) => {
         console.log(result.user);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Login Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
 
         navigate;
         navigate(location?.state ? location.state : "/");
@@ -70,6 +83,15 @@ const Login = () => {
         <div className="form-control mt-6">
           <button className="btn btn-primary">Login</button>
         </div>
+        <div className="divider ">Or, Continue With</div>
+        <button
+          type="button"
+          onClick={googleHandleButton}
+          className="btn btn-outline btn-primary  w-full flex justify-between items-center cursor-pointer "
+        >
+          Google
+          <FcGoogle className="w-8 h-8" />
+        </button>
       </form>
       <p className="text-center">
         do not Have An Account?{" "}

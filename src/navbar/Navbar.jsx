@@ -1,6 +1,20 @@
 import { Link, NavLink } from "react-router-dom";
+import navImage from "../assets/user.png";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
+import logoImage from "../assets/Travel-agency-logo-design-template-on-transparent-background-PNG-removebg-preview (1).png";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleSignOut = () => {
+    logOut()
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
   const pages = (
     <>
       <li>
@@ -21,7 +35,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-red-100">
+    <div className="navbar bg-gray-100">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -47,18 +61,36 @@ const Navbar = () => {
             {pages}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <Link>
+          <img className="w-14 h-14" src={logoImage} alt="" />
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{pages}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login">
-          <button className="btn btn-outline btn-success mr-3">Login</button>
-        </Link>
-        <Link to="/register">
-          <button className="btn btn-outline btn-success">Register</button>
-        </Link>
+        <label tabIndex={0} className="btn btn-ghost btn-circle avatar"></label>
+        <div className="ml-2 ">
+          {user ? (
+            <>
+              <div className="flex">
+                <div className="mr-3">
+                  <img
+                    className="rounded-full w-10  "
+                    src={user?.photoURL || navImage}
+                  />
+                </div>
+                <button onClick={handleSignOut} className="btn">
+                  Sign Out
+                </button>
+              </div>
+            </>
+          ) : (
+            <Link className="hidden lg:block" to="/login">
+              <button className="btn btn-outline btn-accent">Login</button>
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );
