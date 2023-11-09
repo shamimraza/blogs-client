@@ -17,7 +17,7 @@ const BlogCard = ({ item }) => {
       userEmail,
     };
     console.log(addToCard);
-    fetch("http://localhost:5000/api/v1/blogs", {
+    fetch("https://my-blogs-server.vercel.app/api/v1/blogs", {
       method: "POST",
       headers: {
         "content-type": "application/json",

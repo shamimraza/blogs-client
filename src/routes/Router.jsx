@@ -30,7 +30,9 @@ const router = createBrowserRouter([
         path: "/allBlogs",
         element: <AllBlogs></AllBlogs>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/v1/blog/${params.category}`),
+          fetch(
+            `https://my-blogs-server.vercel.app/api/v1/blog/${params.category}`
+          ),
       },
       {
         path: "/featured",
@@ -52,7 +54,9 @@ const router = createBrowserRouter([
         path: "/details/:id",
         element: <Details></Details>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/v1/category/${params.id}`),
+          fetch(
+            `https://my-blogs-server.vercel.app/api/v1/category/${params.id}`
+          ),
       },
     ],
   },

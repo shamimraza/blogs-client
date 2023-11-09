@@ -8,7 +8,7 @@ const Wishlist = () => {
   const [userOrder, setUserOrder] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/blogs")
+    fetch(" https://my-blogs-server.vercel.app/v1/blogs")
       .then((res) => res.json())
       .then((result) => setUserOrder(result));
   }, [user?.email]);

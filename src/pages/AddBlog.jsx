@@ -19,7 +19,7 @@ const AddBlog = () => {
       long_description,
     };
     console.log(newBlog);
-    fetch("http://localhost:5000/api/v1/blogs", {
+    fetch("https://my-blogs-server.vercel.app/api/v1", {
       method: "POST",
       headers: {
         "content-type": "application/json",
