@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import navImage from "../assets/user.png";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
-import logoImage from "../assets/Travel-agency-logo-design-template-on-transparent-background-PNG-removebg-preview (1).png";
+import logoImage from "../assets/icons8-blogs-64.png";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);

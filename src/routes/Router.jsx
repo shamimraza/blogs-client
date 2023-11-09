@@ -8,6 +8,7 @@ import Wishlist from "../pages/Wishlist";
 import Login from "../components/login/Login";
 import Register from "../components/login/Register";
 import Details from "../pages/Details";
+import Prived from "./Prived";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,7 +20,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/addBlog",
-        element: <AddBlog></AddBlog>,
+        element: (
+          <Prived>
+            <AddBlog></AddBlog>
+          </Prived>
+        ),
       },
       {
         path: "/allBlogs",

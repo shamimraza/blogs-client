@@ -18,7 +18,7 @@ const Wishlist = () => {
       <h2 className="text-center text-3xl font-bold text-orange-500">
         Read Wishlist
       </h2>
-      <div>
+      <div className="grid md:grid-cols-1 lg:grid-cols-2">
         {userOrder.map((users) => (
           <div key={users._id}>
             <div className="card w-11/12 mx-auto bg-base-100 shadow-xl mt-10 my-5">
@@ -36,7 +36,7 @@ const Wishlist = () => {
                 <p>{users.short_description}</p>
                 <div className="card-actions justify-end">
                   <button className="btn btn-sm">Details</button>
-                  <button className="btn btn-sm">Wishlist</button>
+                  <button className="btn btn-sm">Delete</button>
                 </div>
               </div>
             </div>
