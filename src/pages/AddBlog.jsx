@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 const AddBlog = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,6 +19,25 @@ const AddBlog = () => {
       long_description,
     };
     console.log(newBlog);
+    fetch("http://localhost:5000/api/v1/blogs", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newBlog),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "success!",
+            text: "Blog added successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
   };
   return (
     <div className="bg-[#F4F3F0] p-24">
@@ -105,7 +126,7 @@ const AddBlog = () => {
         </div>
         <input
           type="submit"
-          value="Add Brand"
+          value="Submit"
           className="bg-gray-200 btn btn-block"
         />
       </form>

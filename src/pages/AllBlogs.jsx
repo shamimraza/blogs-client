@@ -3,6 +3,8 @@ import { useState } from "react";
 import useAxios from "../hooks/useAxios";
 import { capitalizeWords } from "../components/utilites/Capabilites";
 import CategoryCard from "../components/categoryCard/CategoryCard";
+import { useLoaderData } from "react-router-dom";
+import SingleBlog from "../components/singleBlog/SingleBlog";
 
 const categoryName = [
   "Travel",
@@ -13,10 +15,11 @@ const categoryName = [
   "Technology",
 ];
 const AllBlogs = () => {
+  const blogs = useLoaderData();
+  console.log(blogs);
   const [categories, setCategories] = useState();
   console.log(categories);
   const [date, setDate] = useState();
-  console.log(date);
   const axios = useAxios();
 
   const getCategories = async () => {
@@ -28,7 +31,7 @@ const AllBlogs = () => {
     queryKey: ["category, date"],
     queryFn: getCategories,
   });
-  console.log(data);
+  // console.log(data);
   return (
     <div>
       <div>
@@ -38,6 +41,16 @@ const AllBlogs = () => {
           right steps, so you can hear a message and do a message in practical
           ways.
         </p>
+        <div>
+          <h2 className="mt-10 font-bold text-3xl text-orange-500">
+            Add Blog Site
+          </h2>
+          <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-3">
+            {blogs.map((blog) => (
+              <SingleBlog key={blog._id} blog={blog}></SingleBlog>
+            ))}
+          </div>
+        </div>
         <div className="flex justify-end items-center border-2 border-primary rounded-2xl p-5 gap-5 my-10">
           <h1 className="flex-1 text-xl font-semibold">
             Choose Blogs Category

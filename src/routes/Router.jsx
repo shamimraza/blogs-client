@@ -24,6 +24,8 @@ const router = createBrowserRouter([
       {
         path: "/allBlogs",
         element: <AllBlogs></AllBlogs>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/api/v1/blog/${params.category}`),
       },
       {
         path: "/featured",
